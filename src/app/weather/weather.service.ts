@@ -38,7 +38,7 @@ export class WeatherService implements IWeatherService{
   getCurrentWeather(city:string, country:string): Observable<ICurrentWeather>{
     return this.httpClient.get<ICurrentWeatherData>(
       `${environment.baseUrl}?`+
-      `q=${city},${country}&appid=${environment.appId}`
+      `q=${city},${country}&appid=${environment.appId}&units=metric`
     ).pipe(
       map( data => this.transformToICurrentWeather(data) )
     )
@@ -50,7 +50,8 @@ export class WeatherService implements IWeatherService{
       country: data.sys.country,
       date: data.dt * 1000,
       image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
-      temperature: this.convertKelvinToFahrenheit(data.main.temp),
+      // temperature: this.convertKelvinToFahrenheit(data.main.temp),
+      temperature: data.main.temp,
       description: data.weather[0].description
     }
   }
