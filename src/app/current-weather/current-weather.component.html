@@ -1,15 +1,15 @@
 <div *ngIf="current" class="content-margin">
   <div fxLayout="row">
-    <div fxFlex="66%">{{current.city}}, {{current.country}}</div>
-    <div class= "right" fxFlex>{{current.date | date:'fullDate'}}</div>
+    <div fxFlex="66%" class="mat-title no-margin">{{current.city}}, {{current.country}}</div>
+    <div class= "right mat-subheading-2 no-margin" fxFlex>{{current.date | date:'EEEE MMM d'}}{{getOrdinal(current.date)}}</div>
   </div>
-  <div fxLayout="row">
+  <div fxLayout="row" fxLayoutAlign="center center">
     <div fxFlex="66%">
-      <img [src]='current.image'>
+      <img style="zoom: 150%" [src]='current.image'>
     </div>
-    <div class="right" fxFlex>{{current.temperature | number:'1.0-0'}}&#8451;</div>
+    <div class="right mat-display-3 no-margin" fxFlex>{{current.temperature | number:'1.0-0'}}&#8451;</div>
   </div>
-  <div style="text-align:center">
+  <div style="text-align:center" class="mat-caption">
     {{current.description}}
   </div>
 </div>
